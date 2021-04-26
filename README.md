@@ -5,6 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 #Git 
 git clone https://github.com/Rgns/real-state-frontend.git
 
+#perform : npm install on location of package.json
+
 ## Development server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
