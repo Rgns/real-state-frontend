@@ -1,0 +1,100 @@
+<div class="view-listing">
+  <div class="view-listing__table">
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Listing Id</th>
+        <th>City</th>
+        <th>Real State Type
+          <span title="Filter"
+                class="glyphicon glyphicon-filter view-listing__table-filter"
+                [class._applied]="realEstateTypeFilter"
+          ></span>
+          <select [(ngModel)]="realEstateTypeFilter"
+                  (ngModelChange)="_filterChange()"
+          >
+            <option *ngFor="let type of _realStateType"
+                    [value]="type.id"
+            >
+              {{type.name}}
+            </option>
+          </select>
+        </th>
+        <th>Street</th>
+        <th>Living Area</th>
+        <th>Rental Price
+          <span title="Filter"
+                class="glyphicon glyphicon-filter view-listing__table-filter"
+                [class._applied]="minRentalPriceFilter || maxRentalPriceFilter"
+          ></span>
+          <input class="view-listing__table-filter-input"
+                 type="text" [(ngModel)]="minRentalPriceFilter"
+                 (ngModelChange)="_filterChange()"
+                 placeholder="MIN"
+          >
+          -
+          <input class="view-listing__table-filter-input"
+                 type="text"
+                 [(ngModel)]="maxRentalPriceFilter"
+                 (ngModelChange)="_filterChange()"
+                 placeholder="MAX"
+          >
+        </th>
+        <th>Sales Price
+          <span title="Filter"
+                class="glyphicon glyphicon-filter view-listing__table-filter"
+                [class._applied]="minSalesPriceFilter || minSalesPriceFilter"
+          ></span>
+          <input class="view-listing__table-filter-input"
+                 type="text"
+                 [(ngModel)]="minSalesPriceFilter"
+                 (ngModelChange)="_filterChange()"
+                 placeholder="MIN"
+          >
+          -
+          <input class="view-listing__table-filter-input"
+                 type="text"
+                 [(ngModel)]="maxSalesPriceFilter"
+                 (ngModelChange)="_filterChange()"
+                 placeholder="MAX"
+          >
+        </th>
+        <th>Actions</th>
+        <th>More Details</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let list of listingService.listings$| async">
+        <td>{{list?.listingId}}</td>
+        <td>{{list?.city}}</td>
+        <td>{{list?.realEstateType | showPipe}}</td>
+        <td>{{list?.street}}</td>
+        <td>{{list?.livingArea}}</td>
+        <td>{{list?.rentalPrice}}</td>
+        <td>{{list?.salesPrice}}</td>
+        <td>
+          <div class="view-listing__table-actions">
+            <button title="Edit"
+                    class="glyphicon glyphicon-pencil"
+                    (click)="editListing.emit(list)"
+            ></button>
+            <button title="Delete"
+                    class="glyphicon 	glyphicon-trash"
+                    (click)="deleteListing.emit(list?.listingId)"
+            ></button>
+          </div>
+        </td>
+        <td>
+          <button type="button"
+                  class="btn btn-link"
+                  (click)="showDetails.emit(list)"
+          >
+            Details
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

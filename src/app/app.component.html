@@ -1,0 +1,18 @@
+<div class="app">
+  <div class="alert alert-warning alert-dismissible"
+       style="z-index: 2"
+       *ngIf="notificationService?.message"
+  >
+    <strong>Success!</strong> {{notificationService?.message}}
+  </div>
+  <app-header [title]=title
+              [name]="name"
+  ></app-header>
+
+  <app-listing-wrapper></app-listing-wrapper>
+
+  <app-footer class="app__footer-banner"
+              [author]="author"
+              [version]="version"
+  ></app-footer>
+</div>

@@ -1,0 +1,47 @@
+.view-listing {
+
+  &__table {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 4rem;
+
+    &-filter {
+      padding-left: 0.5rem;
+      padding-right: 1rem;
+
+      &-input {
+        width: 7rem;
+      }
+
+      &._applied {
+        color: orangered;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      justify-content: space-evenly;
+
+      button {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+
+}
+
+tbody {
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

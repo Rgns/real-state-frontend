@@ -1,0 +1,34 @@
+<app-modal title="More Details"
+           [(open)]="open"
+           (openChange)="openChange.emit($event)"
+>
+  <div class="more-details-wrapper">
+    <div class="more-details-wrapper-sub-wrapper">
+      <div>
+        <div class="more-details-block" *ngFor="let key of _keys">
+          <div class="more-details-block-key">{{key}} :</div>
+          <div class="more-details-block-value">
+            {{_details[key].value}}
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let key of _keys">
+        <ng-container *ngIf="_details[key].type === 'IMAGE'">
+          <button *ngIf="_details[key].value;else unavailable" type="button" class="btn btn-link">
+            <a [href]="_details[key].value" target="_blank">
+              <img class="more-details-block-value-image" [src]="_details[key].value"
+                   alt="unavailable">
+            </a>
+          </button>
+          <ng-template #unavailable>
+            <button type="button" class="btn btn-link more-details-block-value-image" disabled>
+              Image is unavailable
+            </button>
+          </ng-template>
+
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+</app-modal>

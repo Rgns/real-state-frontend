@@ -1,0 +1,27 @@
+<div class="listing-wrapper">
+  <div class="listing-wrapper__create">
+    <button type="button"
+            class="btn btn-success listing-wrapper__create-button"
+            (click)="_addListing()"
+    >
+      Add New Listing
+    </button>
+  </div>
+
+  <app-create-listing *ngIf="_createListing"
+                      [(open)]="_createListing"
+                      [listing]="_listing"
+                      [mode]="_mode"
+  ></app-create-listing>
+
+  <app-more-details [details]="_detailsNeeded"
+                    [(open)]="_showDetails"
+  ></app-more-details>
+
+  <div class="listing-wrapper__list">
+    <app-view-listing (deleteListing)="_deleteListing($event)"
+                      (editListing)="_editListing($event)"
+                      (showDetails)="_showMoreDetails($event)"
+    ></app-view-listing>
+  </div>
+</div>

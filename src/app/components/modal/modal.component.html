@@ -1,0 +1,20 @@
+<div class="modal" *ngIf="open">
+  <div class="modal__wrapper">
+    <div class="modal__header">
+      <div class="modal__header-title"> {{title}} </div>
+      <div class="glyphicon glyphicon-remove modal__header-icon" (click)="_cancel()">
+      </div>
+    </div>
+    <div class="modal__content">
+      <ng-content></ng-content>
+    </div>
+    <div class="modal__footer">
+      <button type="button" class="btn btn-secondary modal__footer-action-button" *ngIf="primaryBtnLabel"
+              [disabled]="_primaryBtnDisabled"
+              (click)="_primaryBtnClick()">{{primaryBtnLabel}}</button>
+
+      <button type="button" class="btn  btn-secondary modal__footer-action-button"
+              (click)="_secondaryBtnClick()">{{secondaryBtnLabel}}</button>
+    </div>
+  </div>
+</div>
